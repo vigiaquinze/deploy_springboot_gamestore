@@ -13,7 +13,7 @@ FROM openjdk:17-jdk-slim
 EXPOSE 8080
 
 # Copiar o arquivo JAR da aplicação para o container
-COPY --from=built /target/bookstore.jar /app.jar
+COPY --from=build /target/bookstore.jar app.jar
 
 # Definir o comando de inicialização da aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]
