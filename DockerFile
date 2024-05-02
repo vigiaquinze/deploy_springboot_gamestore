@@ -1,7 +1,7 @@
 FROM ubuntu:latest AS build
 
 # Instale o OpenJDK
-RUN apt-get update && apt-get install -y openjdk-17-OpenJDK
+RUN apt-get update && apt-get install -y openjdk-17-openjdk
 COPY . .
 
 RUN apt-get install maven -y
@@ -13,7 +13,7 @@ FROM openjdk:17-jdk-slim
 EXPOSE 8080
 
 # Copiar o arquivo JAR da aplicação para o container
-COPY --from=built /target/bookstore.jar /app.jar
+COPY --from=built /target/bookstore.jar app.jar
 
 # Definir o comando de inicialização da aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]
